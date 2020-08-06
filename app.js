@@ -7,8 +7,9 @@ const redisStore = require('connect-redis')(session);
 const redis = require('redis');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-
+const sessionSecretKey = require('./config/sessionSecretKey');
 const middlewares = require('./middlewares');
+const url = 'mongodb://localhost:27017/app';
 
 const initExpress = redisClient => {
 	const app = express();
@@ -19,7 +20,8 @@ const initExpress = redisClient => {
 	app.use(
 		session({
 			key: 'app.sid',
-			secret: 'session-secret',
+			// 세션 시크릿 키 따로 저장
+			secret: sessionSecretKey,
 			store: new redisStore({
 				host: '127.0.0.1',
 				port: 6379,
@@ -50,7 +52,7 @@ const initExpress = redisClient => {
 
 const initRedis = () => redis.createClient();
 const initMongo = async () => {
-	await mongoose.connect('mongodb://localhost:27017/app', { useNewUrlParser: true });
+	await mongoose.connect(url, { useNewUrlParser: true });
 };
 
 const main = () => {
