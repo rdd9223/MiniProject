@@ -1,15 +1,18 @@
 # MiniProject
+
 채팅 + 파일 매니저 + 회원 시스템 구현 풀스택 프로젝트
 
 ### 템플릿 실행
 
 - 실행 전 작업
+
   - DB 설치
     - `cd scripts && ./installDb.sh` 명령어로 Mongodb, Redis를 설치합니다.
   - npm package 설치
     - `npm install` 명령어로 npm package를 설치합니다.
 
 - 실행
+
   - DB 실행
     - `./scripts/startDb.sh` 명령어로 Mongodb, Redis를 시작합니다.
   - App Build
