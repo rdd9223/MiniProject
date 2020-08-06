@@ -1,1 +1,1 @@
-service mongodb start && redis-server
+sudo service mongodb start && redis-server
